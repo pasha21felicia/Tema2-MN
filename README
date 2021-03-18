@@ -1,0 +1,16 @@
+DIGORI PARASCOVIA
+313CC
+TEMA 2 - MN - PageRank
+
+Cerinta 1:
+	Am avut de implementat Algoritmul Iterative, a carei functie primeste ca argumente numele fisierului din care se va citi graful, parametrul d, parametrul eps si va avea ca date de iesire vectorul R. Cu un while pentru fiecare linie pana la N, am citit nodurile invecinate cu cel corespunzator liniei folosind functia fscanf. Pentru a construi matricea de adiacenta am respectat conditia ca nodul sa fie diferit de vecin, astfel acolo am pus 1 si digonala din A ramane 0. 
+Am creat o matrice K in care am pastrat pe diagonala principala numarul de noduri cu care se invecineaza nodul i. Am calculat matricea de adiacenta M ca fiind transpusa produsului dintre K si A.
+Dupa formarea matricei de adiacenta, se aplica formula de recurenta data asupra lui R (initializat cu 0) si R_t0 (initalizat cu 1/N) si la fiecare pas se actualizeaza R-ul precedent. Bucla de va opri atunci cand norma(R_t0 - R) >= eps. 
+
+Cerinta 2:
+	Am avut de implementat algoritmul Algebraic, a carei functie primeste ca parametru numele fisierului din care se va citi graful si parametrul d, avand ca data de iesire vectorul R. Am format matricea de adiacenta prin aceeasi metoda ca la Iterative. Avand formula R=(I-d*M)^-1*(1-d)/N*ones*(N,1) trebuie de calculat inversa matricei eye(n)-d*M unde am folosit algoritmul Gram-Schmidt din functia PR_Inv si apoi am inlocuit in formula. 
+
+Cerinta 3:
+	Am avut de implementat functiile Apartenenta.m care primeste ca date de intrare un vector x, si valorile val1, val2 citite din fisierul de intrare si functia PageRank.m care primeste numele fisierului de intrare, parametrul d si eps, care are ca scop afisarea intr-un fisier .out a vectorului PR din functia Iterative, vectorul PR din functia Algebraic si apoi un clasament al celor mai importante pagini, clasamentul arata locul obtinuit(numarul i), numarul paginii care a obtinut acest loc si gradul de apartenenta al aceste pagini pentru multimea de pagini importante. 
+Pentru a ajunge sa citesc val1 si val2 din fisier, a fost necessar sa citesc cu un while fgets toate liniile de inainte. Apoi apelez functiile Iterative si Algebraic a caror rezultat il pastrez in R1 si R2 respectiv, afisandu-le la un spatiu distanta cum e mentionat in conditie. Pentru a avea indicii in ordinea ceruta de cerinta am folosit un algoritm simplu de sortare(a bulelor) in care sortam vectorul PR1 si vectorul de pozitii. La final printez pentru fiecare linie locul obtinut i, numarul paginii care a obtinut acelasi loc poz(i) si gradul de aparteneta la multimea de pagini importante aflate prin apelul functiei Apartenenta.m. 
+
